@@ -27,7 +27,7 @@ export default function ContactSection() {
       } else {
         setState('error')
       }
-    } catch {
+    } catch (_err) {
       setState('error')
     }
   }
