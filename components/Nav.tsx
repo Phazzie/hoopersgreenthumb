@@ -3,9 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
+// ─── Add Google Voice number here when ready ───────────────────────────────
+// Format: '(269) 555-1234'
+const PHONE = ''
+// ──────────────────────────────────────────────────────────────────────────
+
 export default function Nav() {
-  const [scrolled,  setScrolled]  = useState(false)
-  const [menuOpen,  setMenuOpen]  = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -14,9 +19,10 @@ export default function Nav() {
   }, [])
 
   const links = [
-    { href: '#services', label: 'Services' },
-    { href: '#about',    label: 'About'    },
-    { href: '#work',     label: 'Our Work' },
+    { href: '#services',   label: 'Services'   },
+    { href: '#about',      label: 'About'       },
+    { href: '#work',       label: 'Our Work'    },
+    { href: '#how',        label: 'How It Works'},
   ]
 
   return (
@@ -40,7 +46,7 @@ export default function Nav() {
       </Link>
 
       {/* Desktop links */}
-      <ul className="hidden md:flex list-none gap-10 items-center">
+      <ul className="hidden md:flex list-none gap-8 items-center">
         {links.map(({ href, label }) => (
           <li key={href}>
             <a
@@ -51,27 +57,50 @@ export default function Nav() {
             </a>
           </li>
         ))}
+
+        {/* Phone number — shows when PHONE is set */}
+        {PHONE && (
+          <li>
+            <a
+              href={`tel:${PHONE.replace(/\D/g, '')}`}
+              className="text-gold font-display font-semibold text-sm no-underline hover:text-gold-light transition-colors"
+            >
+              📞 {PHONE}
+            </a>
+          </li>
+        )}
+
         <li>
-          <a href="#contact" className="btn btn-gold px-6 py-2.5 text-sm">
+          <a href="#contact" className="btn btn-gold px-5 py-2.5 text-sm">
             Get a Quote
           </a>
         </li>
       </ul>
 
-      {/* Mobile hamburger */}
-      <button
-        className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
-        onClick={() => setMenuOpen(o => !o)}
-        aria-label="Toggle menu"
-      >
-        <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-        <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-        <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-      </button>
+      {/* Mobile: phone + hamburger */}
+      <div className="md:hidden flex items-center gap-3">
+        {PHONE && (
+          <a
+            href={`tel:${PHONE.replace(/\D/g, '')}`}
+            className="text-gold font-semibold text-sm no-underline"
+          >
+            📞
+          </a>
+        )}
+        <button
+          className="flex flex-col gap-1.5 p-2 cursor-pointer"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-cream rounded transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+      </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden fixed top-20 left-0 right-0 bg-dark/97 backdrop-blur-md border-b border-gold/10 px-[5%] py-8 flex flex-col gap-6">
+        <div className="md:hidden fixed top-20 left-0 right-0 bg-dark/97 backdrop-blur-md border-b border-gold/10 px-[5%] py-8 flex flex-col gap-5">
           {links.map(({ href, label }) => (
             <a
               key={href}
@@ -82,6 +111,11 @@ export default function Nav() {
               {label}
             </a>
           ))}
+          {PHONE && (
+            <a href={`tel:${PHONE.replace(/\D/g, '')}`} className="text-gold font-semibold no-underline">
+              📞 {PHONE}
+            </a>
+          )}
           <a
             href="#contact"
             className="btn btn-gold text-center"
