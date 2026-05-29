@@ -1,22 +1,16 @@
-import Image from 'next/image'
-
 const HERO_IMG =
   'https://hyperagent.com/api/files/usergenerated/threads/cmpq3992f070407ad673ddwqo/images/c5c05d47-2778-4f04-81e7-91230d4d346b.png'
 
 export default function Hero() {
   return (
     <section className="relative h-screen min-h-[680px] flex items-end pb-[8vh] overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 animate-slowzoom">
-        <Image
-          src={HERO_IMG}
-          alt="Thomas Hooper standing in a beautifully manicured Kalamazoo yard"
-          fill
-          priority
-          className="object-cover object-[center_25%]"
-          sizes="100vw"
-        />
-      </div>
+
+      {/* Background image — CSS approach bypasses Next.js image proxy entirely */}
+      <div
+        className="absolute inset-0 animate-slowzoom bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url('${HERO_IMG}')`, backgroundPosition: 'center 25%' }}
+        aria-hidden="true"
+      />
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark/90 via-dark/60 to-forest/30" />
