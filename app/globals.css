@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-cream font-body overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-display text-[0.72rem] font-semibold tracking-[0.22em] uppercase text-gold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-content-center px-8 py-3 rounded-md
+           font-display font-semibold text-[0.95rem] cursor-pointer transition-all duration-200
+           no-underline whitespace-nowrap;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-dark hover:bg-gold-light hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.35)];
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-cream border border-cream/35
+           hover:border-cream hover:bg-cream/5;
+  }
+
+  .btn-dark {
+    @apply bg-dark text-cream hover:bg-[#0f2012] hover:-translate-y-0.5;
+  }
+
+  .btn-lg {
+    @apply px-10 py-4 text-base;
+  }
+
+  /* Reveal animations */
+  .reveal {
+    @apply opacity-0 translate-y-7 transition-all duration-700 ease-out;
+  }
+
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .reveal-left {
+    @apply opacity-0 -translate-x-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal-left.visible {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .reveal-right {
+    @apply opacity-0 translate-x-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal-right.visible {
+    @apply opacity-100 translate-x-0;
+  }
+}
