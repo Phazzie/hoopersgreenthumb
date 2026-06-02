@@ -1,8 +1,8 @@
 const items = [
   'Kalamazoo, MI — locally owned',
   'Owner does every single job',
+  '(269) 440-0864',
   'thomas@hoopersgreenthumb.com',
-  'Residential specialists',
 ]
 
 export default function TrustBar() {
