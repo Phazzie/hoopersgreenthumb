@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 // Set your Google Voice number here when ready
-const PHONE: string = ''
+const PHONE: string = '(269) 440-0864'
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false)
