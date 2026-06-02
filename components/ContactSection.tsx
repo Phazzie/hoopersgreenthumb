@@ -49,6 +49,7 @@ export default function ContactSection() {
           </p>
           <div className="flex flex-col gap-4">
             {[
+              { icon: '📞', label: <a href="tel:2694400864" className="text-cream-muted hover:text-gold transition-colors no-underline">(269) 440-0864</a> },
               { icon: '✉️', label: <a href="mailto:thomas@hoopersgreenthumb.com" className="text-cream-muted hover:text-gold transition-colors no-underline">thomas@hoopersgreenthumb.com</a> },
               { icon: '📍', label: 'Kalamazoo, Michigan' },
               { icon: '⏱️', label: 'Response within 24 hours — usually faster' },
