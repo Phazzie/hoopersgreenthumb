@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 // ─── Add Google Voice number here when ready ───────────────────────────────
 // Format: '(269) 555-1234'
-const PHONE = ''
+const PHONE: string = ''
 // ──────────────────────────────────────────────────────────────────────────
 
 export default function Nav() {
